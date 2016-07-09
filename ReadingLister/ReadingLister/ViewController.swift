@@ -37,6 +37,11 @@ class ViewController: NSViewController {
             let request = NSURLRequest(URL: URLComponents!.URL!)
             
             let task = session.dataTaskWithRequest(request) { (data, response, error) in
+                guard error == nil else {
+                    print("ERROR: \(error!.localizedDescription)")
+                    return
+                }
+                
                 print(response)
                 let responseData = String(data: data!, encoding: NSUTF8StringEncoding)
                 print(responseData)
